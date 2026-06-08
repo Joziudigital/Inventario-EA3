@@ -56,6 +56,15 @@ public class ArbolInventario {
         if (nodo == null) {
             return null;
         }
-        if 
+        if (id == nodo.id) {
+            return nodo;
+        }
+        if (id < nodo.id) {
+            return buscarRecursivo(nodo.izquierdo, id);
+        } else {
+            return buscarRecursivo(nodo.derecho, id);
+        }
     }
-    }
+}
+
+    
