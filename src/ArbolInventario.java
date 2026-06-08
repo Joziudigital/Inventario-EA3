@@ -25,5 +25,21 @@ public class ArbolInventario {
     }
     
     public void mostrarInorden() {
-        if ()
+        if (raiz == null) {
+            System.out.println("El inventario está vacío.");
+            return;
+        }
+        System.out.println("   ID    |  Nombre");
+        System.out.println("---------|----------------");
+        inordenRecursivo(raiz);
     }
+
+    private void inordenRecursivo(Producto nodo) {
+        if (nodo != null) {
+            inordenRecursivo(nodo.izquierdo);
+            System.out.printf("%-5d | %s%n", nodo.id, nodo.nombre);
+            inordenRecursivo(nodo.derecho);
+        }
+    }
+
+    
