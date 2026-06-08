@@ -1,10 +1,12 @@
 import java.util.Scanner;
 
+
 public class Main {
 
     public static void main(String[] args) {
-        Scanner scanner =new Scanner(System.in);
-        ArbolInventario inventario =new ArbolInventario();
+
+        Scanner scanner = new Scanner(System.in);
+        ArbolInventario inventario = new ArbolInventario();
         int opcion;
 
         System.out.println("===============================");
@@ -15,9 +17,10 @@ public class Main {
         do {
             mostrarMenu();
 
-            System.out.print("Seleccione una opción: ");
+
+            System.out.print("  Seleccione una opción: ");
             while (!scanner.hasNextInt()) {
-                System.out.print("Número no válido. Por favor, ingrese un número: ");
+                System.out.print("  Entrada inválida. Ingrese un número: ");
                 scanner.next();
             }
             opcion = scanner.nextInt();
@@ -27,62 +30,68 @@ public class Main {
 
             switch (opcion) {
 
-                case 1:
+                case 1: 
                     System.out.print("_______Registrar Producto_______");
-                    System.out.print("\nIngrese el ID del producto (número entero): ");
+                    System.out.print("  Ingrese el ID (número entero): ");
                     while (!scanner.hasNextInt()) {
-                        System.out.print("Número no válido. Por favor, ingrese un número entero: ");
+                        System.out.print("  ID inválido. Ingrese un número entero: ");
                         scanner.next();
                     }
                     int id = scanner.nextInt();
                     scanner.nextLine();
 
-                    System.out.print("Ingrese el nombre del producto: ");
+                    System.out.print("  Ingrese el nombre del producto: ");
                     String nombre = scanner.nextLine().trim();
 
-                    if (nombre.isEmpty()){
-                        System.out.println("El nombre del producto no puede estar vacío. Producto no registrado.");
+                    if (nombre.isEmpty()) {
+                        System.out.println("   El nombre no puede estar vacío.");
                     } else {
                         inventario.insertar(id, nombre);
-                        System.out.println("Producto registrado correctamente.");
-
+                        System.out.println("   Producto registrado correctamente.");
                     }
                     break;
 
                 case 2:
-                    System.out.print("_______Inventario Ordenado (Inorden)_______");
+                    System.out.println("─── Inventario Ordenado (Inorden) ───");
                     inventario.mostrarInorden();
                     break;
-                
+
                 case 3:
-                    System.out.print("_______Buscar Producto por ID_______");
-                    System.out.print("\nIngrese el ID del producto a buscar: ");
+                    System.out.println("─── Buscar Producto ───");
+                    System.out.print("  Ingrese el ID a buscar: ");
                     while (!scanner.hasNextInt()) {
-                        System.out.print("Número no válido. Por favor, ingrese un número entero: ");
+                        System.out.print("  ID inválido. Ingrese un número entero: ");
                         scanner.next();
                     }
-                    int idBusqueda = scanner.nextInt();
+                    int idBuscar = scanner.nextInt();
                     scanner.nextLine();
                     inventario.buscar(idBuscar);
                     break;
 
-                case 4:
-                    System.out.println("Saliendo del sistema. ¡Hasta luego!");
+                case 0:
+                    System.out.println("  👋  ¡Hasta luego! Sistema Tree-Stock cerrado.");
                     break;
+
                 default:
-                    System.out.println("Opción no válida. Por favor, seleccione una opción del 1 al 4.");
-                
+                    System.out.println("  Opción no válida. Intente de nuevo.");
             }
+
             System.out.println();
 
-        }   while (opcion != 4);
+        } while (opcion != 0);
+
         scanner.close();
     }
 
+
     private static void mostrarMenu() {
-        System.out.println("1. Registrar Producto");
-        System.out.println("2. Mostrar Inventario (Inorden)");
-        System.out.println("3. Buscar Producto por ID");
-        System.out.println("4. Salir");
+        System.out.println("┌─────────────────────────────┐");
+        System.out.println("│         MENÚ PRINCIPAL      │");
+        System.out.println("├─────────────────────────────┤");
+        System.out.println("│  1. Registrar Producto      │");
+        System.out.println("│  2. Mostrar Inventario      │");
+        System.out.println("│  3. Buscar Producto         │");
+        System.out.println("│  0. Salir                   │");
+        System.out.println("└─────────────────────────────┘");
     }
 }
