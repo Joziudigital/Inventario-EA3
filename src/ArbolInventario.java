@@ -42,4 +42,20 @@ public class ArbolInventario {
         }
     }
 
-    
+    public void buscar (int id) {
+        Producto resultado = buscarRecursivo(raiz, id);
+        if (resultado != null) {
+            System.out.println(" Producto encontrado --> ID: " + resultado.id + " Nombre: " + resultado.nombre);
+        } else {
+            System.out.println(" Producto no encontrado con ID " + id + ".");
+
+        }
+        }
+
+    Private Producto buscarRecursivo(Producto nodo, int id) {
+        if (nodo == null) {
+            return null;
+        }
+        if 
+    }
+    }
